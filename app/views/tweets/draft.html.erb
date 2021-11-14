@@ -1,0 +1,16 @@
+<div class="container">
+    <% @tweet.each do |tweet| %>
+        <%= form_with model: tweet do |f| %>
+        
+            <div class="field">
+            <%= f.label :title %><br />
+            <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
+            </div>
+        
+            <div class="actions">
+                <p><%= f.submit "Tweet", :name => "true" %>
+                <%= f.submit "Save as Draft", :name => "false" %></p>   
+            </div>
+        <% end %>
+    <% end %>
+</div>

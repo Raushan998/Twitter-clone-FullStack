@@ -1,0 +1,36 @@
+<div class="container" >
+<%= link_to "show drafted tweets", draft_tweets_url %>
+<br>
+<%= link_to "create_tweet", new_tweet_path %>
+<table class="table table-dark">
+<thead>
+  <tr>
+    <th scope="col">Tweet</th>
+  </tr>
+</thead>
+<tbody>
+  <%@tweets.each do |tweet|%>
+  <tr>
+    <td> <%= tweet.title %>
+    <br>
+      @<%= tweet.user.username %>
+    <br>
+      <% unless tweet.user == current_user %>
+         <%= link_to "create retweet", new_retweet_tweet_path(tweet.id), style: "text-decoration: none; margin-left: 20px; font-size: 20px; color: pink;", class: "btn btn-success" %>
+      <% end %>
+      <%= link_to "list retweets" , list_retweets_tweet_path(tweet.id), style: "text-decoration: none; margin-left: 20px; color: green; font-size: 20px;", class: "btn btn-warning" %>
+      <%= link_to "create comment", new_tweet_comment_path(tweet.id), style: "text-decoration: none; margin-left: 20px; color: orange; font-size: 20px;", class: "btn btn-primary"%>
+      <%= link_to "Show drafted comment", draft_comment_tweet_comment_index_path(tweet.id), style: "text-decoration: none; margin-left: 20px; color: orange; font-size: 20px;", class: "btn btn-primary"%>
+      <%= link_to "list comments" , list_comment_tweet_comment_index_path(tweet.id), style: "text-decoration: none; margin-left: 20px; color: green; font-size: 20px;", class: "btn btn-warning" %>
+      <%= form_with model: tweet do |f| %>      
+        <div class="actions">
+            <p><%= f.submit "like",  :name => "like", style: "margin-top: 20px;"%>   <%= tweet.likes.length%>
+        </div>
+    <% end %>
+    <br>
+    </td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+</div>

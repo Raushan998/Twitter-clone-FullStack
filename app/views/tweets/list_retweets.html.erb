@@ -1,0 +1,19 @@
+<div class="container" >
+    <table class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col"><h5>Original Tweet</h5><%= @tweet.title %> -> <%= @tweet.user.username%> </th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <%@retweets.each do |retweet|%>
+        <tr>
+                <td> <%= retweet.title %>
+                <br>
+                @<%= retweet.user.username %>
+                </td>
+        </tr>
+    <% end %>
+    </tbody>
+    </table>
+</div>

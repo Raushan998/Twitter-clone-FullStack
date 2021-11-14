@@ -1,0 +1,14 @@
+<div class="container">
+    <%= form_for(@comment, url: tweet_comment_index_path(@tweet)) do |f| %>
+        
+        <div class="field">
+        <%= f.label :Add_Comment %><br />
+        <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
+        </div>
+    
+        <div class="actions">
+            <p><%= f.submit "comment", :name => "true" %>
+            <%= f.submit "Save Comment as Draft", :name => "false" %></p>   
+        </div>
+    <% end %>
+</div>
