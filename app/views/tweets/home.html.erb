@@ -11,9 +11,16 @@
 <tbody>
   <%@tweets.each do |tweet|%>
   <tr>
-    <td> <%= tweet.title %>
+    <td> <%= tweet.title %></br>
+    <%= image_tag tweet.avatar, width: "200px" if tweet.avatar.attached?%></br>
+    <% if tweet.profile_video.attached?%>
+      <video controls style="max-width: 200px; max-height: 200px;">
+        <source src="<%= url_for(tweet.profile_video)%>">
+      </video>
+    <% end %>
+    </br>
     <br>
-      @<%= tweet.user.username %>
+      @<%= username(tweet) %>
     <br>
       <% unless tweet.user == current_user %>
          <%= link_to "create retweet", new_retweet_tweet_path(tweet.id), style: "text-decoration: none; margin-left: 20px; font-size: 20px; color: pink;", class: "btn btn-success" %>

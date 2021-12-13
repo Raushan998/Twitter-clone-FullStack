@@ -10,7 +10,8 @@ module TwitterClone
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-
+    config.serve_static_assets = true
+    config.web_console.development_only = false
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

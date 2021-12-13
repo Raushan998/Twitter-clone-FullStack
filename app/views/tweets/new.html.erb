@@ -5,9 +5,23 @@
         <%= f.label :title %><br />
         <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
         </div>
-    
+        <div class="field">
+           <%= f.label :profile_video%>
+           <%= f.file_field :profile_video, accept: "video/*"%>
+        </div>
+        <div class="field">
+            <%= f.label :avatar%>
+           <%= f.file_field :avatar, accept: "image/*"%>
+        </div>
+        <div style="display: none;" data-upload-progress-target="progress">
+            <div>Uploading your video to our servers: <span id="progressText" data-upload-progress-target="progressText">Warming up...</span></div>
+                <div id="progress-bar" style="background: gray; position: relative; width: 200px; height: 20px;">
+                <div id="progressWidth" data-upload-progress-target="progressWidth" style="width: 0%; height: 100%; position: absolute; background: green;">
+            </div>
+            </div>
+        </div>
         <div class="actions">
-            <p><%= f.submit "Tweet", :name => "true" %>
+            <p><%= f.submit "Tweet", :name => "true", data: { action: "click->upload-progress#showProgress" } %>
             <%= f.submit "Save as Draft", :name => "false" %></p>   
         </div>
     <% end %>

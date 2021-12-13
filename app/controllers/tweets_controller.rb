@@ -1,4 +1,5 @@
 class TweetsController < ApplicationController
+    include TweetsHelper
     before_action :authenticate_user!, except: [:home]
     before_action :set_tweet, only: [:edit, :update, :new_retweet, :create_retweet, :list_retweets, :new_comment, :create_comment]
 
@@ -25,6 +26,7 @@ class TweetsController < ApplicationController
             flash[:notice] = @tweet.errors
         end
         redirect_to "/"
+        # format.html {redirect_to list_retweets_tweet_path(@tweet.id), notice: "Tweet has been added successfully"}
     end
     
     def draft
@@ -32,6 +34,7 @@ class TweetsController < ApplicationController
     end
 
     def update
+        # puts TweetsHelper.html_format(@tweet.username)
         unless params[:like].blank?
             if @tweet.user == current_user
                 flash[:notice] = "You cannot like your own tweet"
@@ -77,7 +80,7 @@ class TweetsController < ApplicationController
     private
 
     def tweet_params
-        params.require(:tweet).permit(:title)
+        params.require(:tweet).permit(:title, :avatar, :profile_video)
     end
 
     def set_tweet

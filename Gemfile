@@ -28,10 +28,13 @@ gem 'pg', '~> 1.1'
 gem 'bundler', '~> 1.17', '>= 1.17.3'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'devise-bootstrap-views', '~> 1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'web-console', '>= 4.1.0'
+  gem 'listen', '~> 3.3'
 end
 
 group :development do
@@ -55,3 +58,15 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "rolify"
+gem "action_policy"
+gem 'aws-sdk', '~> 3'
+# Rails 5.2 and Rails 6
+gem 'active_storage_validations'
+# Optional, to use :dimension validator or :aspect_ratio validator
+gem 'mini_magick', '>= 4.9.5'
+gem 'dotenv-rails', :groups => [:development, :test, :production]
+gem 'resque'
+gem 'stimulus-rails'
+gem 'yard'
+#gem 'web-console', group: :development

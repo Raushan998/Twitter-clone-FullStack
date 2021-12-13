@@ -2,7 +2,7 @@
     <table class="table table-dark">
     <thead>
     <tr>
-        <th scope="col"><h5>Original Tweet</h5><%= @tweet.title %> -> <%= @tweet.user.username%> </th></th>
+        <th scope="col"><h5>Original Tweet</h5><%= @tweet.title %> -> <%= username(@tweet)%> </th></th>
     </tr>
     </thead>
     <tbody>
@@ -10,7 +10,7 @@
         <tr>
                 <td> <%= retweet.title %>
                 <br>
-                @<%= retweet.user.username %>
+                @<%= username(retweet) %>
                 </td>
         </tr>
     <% end %>

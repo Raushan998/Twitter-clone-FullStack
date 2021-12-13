@@ -3,6 +3,8 @@
         
         <div class="field">
         <%= f.label :title %><br />
+        <%= f.file_field :avatar, mutliple: true%>
+        </br>
         <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
         </div>
     
